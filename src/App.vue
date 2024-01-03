@@ -1,9 +1,42 @@
 <template>
-  <ion-app>
-    <ion-router-outlet />
+  <ion-app id="ion-app" ref="ionApp">
+      <ion-router-outlet></ion-router-outlet>
   </ion-app>
 </template>
 
-<script setup lang="ts">
-import { IonApp, IonRouterOutlet } from '@ionic/vue';
+<script>
+import { IonApp, IonRouterOutlet, IonPage } from '@ionic/vue';
+
+
+export default {
+  name: "App",
+  components: { IonApp, IonRouterOutlet, IonPage },
+
+  mounted() {
+    this.resizeHandler();
+    window.addEventListener("resize", () => {
+      this.resizeHandler});
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.resizeHandler);
+  },
+  
+  methods: {
+
+    resizeHandler() {
+     let width= window.innerWidth
+     let height= window.innerHeight
+
+      if(!(width <= 600 && height<= 1000 && (height/width) <= 2.5 && (height/width) >=1.5)) {
+      this.$refs.ionApp.$el.style.maxHeight = `${Math.min(height, (width*2))}px`
+      this.$refs.ionApp.$el.style.maxWidth= `${Math.min(width, (height*0.5))}px`
+      }
+      
+      this.$refs.ionApp.$el.style.margin= `auto`
+    },
+  },
+};
 </script>
+
+<style scoped>
+</style>
