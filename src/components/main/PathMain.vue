@@ -21,10 +21,10 @@ import PathOptions from '@/components/main/PathOptions.vue';
 export default defineComponent({
     name: "PathMain",
     components: { IonContent, IonImg, PathOptions },
-
+props: [],
     data() {
         return {
-            isScrolling: false,
+            isScrolling: false, 
             weeks: ["מבחן סף","רפואה","ארץ ישראל","אנשים",5,6,7,8]
         };
     },
@@ -41,7 +41,6 @@ export default defineComponent({
 
     methods: {
         showWeek() {
-
         },
 
 
@@ -51,7 +50,7 @@ export default defineComponent({
         isPathOpen: {
             handler() {
                 this.isScrolling = true;
-                console.log("d")
+console.log(this.isPathOpen)
             },
         },
     },

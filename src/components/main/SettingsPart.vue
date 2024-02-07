@@ -55,6 +55,7 @@ export default defineComponent({
 
         toPath() {
             this.togglePath();
+            this.$emit("chosenBattalion", this.chosenBattalion, this.isOld);
         }
 
     }

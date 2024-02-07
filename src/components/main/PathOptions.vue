@@ -1,5 +1,5 @@
 <template>
-    <div :class="['weekly-circle', weekNum%2===1 ? 'right-circle' : 'left-circle']" :style="{ backgroundImage: `url(${circleSrc})` , top: `${circlePlacement}%`}" :id="circleId">
+    <div @click="navigateToWeek" :class="['weekly-circle', weekNum%2===1 ? 'right-circle' : 'left-circle']" :style="{ backgroundImage: `url(${circleSrc})` , top: `${circlePlacement}%`}" :id="circleId">
         <div class="titleContainer">
         <div class="weekNum-title"> שבוע {{weekNum+1}} </div>
         <div class="week-title"> {{week}}</div>
@@ -18,13 +18,12 @@ export default defineComponent({
 
     data() {
         return {
-        circleSrc: `/src/assets/media/week-circle/circle${this.weekNum%3}.png`,
+        circleSrc: `/src/assets/media/week-circle/circle${this.weekNum%4}.svg`,
         circleId: `week${this.weekNum}`,
         circlePlacement: this.weekNum*13,
         };
     },
     mounted() {
-        console.log(this.circlePlacement)
     },
     computed: {
         weekNUm() {
@@ -32,7 +31,9 @@ export default defineComponent({
         }
     },
     methods: {
-
+        navigateToWeek(){
+            this.$router.push('/weekDetails')
+        }
 
 
     },
@@ -45,8 +46,8 @@ export default defineComponent({
   
 <style scoped>
 .weekly-circle {
-    width: 33%;
-    height: 13%;
+    width: 36%;
+    height: 16%;
     background-size: 100% 100%;
     position: absolute;
     display: flex;

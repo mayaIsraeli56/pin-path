@@ -1,6 +1,6 @@
 <template>
   <ion-app id="ion-app" ref="ionApp">
-      <ion-router-outlet></ion-router-outlet>
+      <ion-router-outlet @pathOpened="pathOpened"></ion-router-outlet>
   </ion-app>
 </template>
 
@@ -11,7 +11,11 @@ import { IonApp, IonRouterOutlet, IonPage } from '@ionic/vue';
 export default {
   name: "App",
   components: { IonApp, IonRouterOutlet, IonPage },
-
+  data() {
+        return {
+            isScrolling: false,
+        };
+    },
   mounted() {
     this.resizeHandler();
     window.addEventListener("resize", () => {
@@ -34,6 +38,9 @@ export default {
       
       this.$refs.ionApp.$el.style.margin= `auto`
     },
+    pathOpened() {
+      console.log("skahfjw")
+    }
   },
 };
 </script>

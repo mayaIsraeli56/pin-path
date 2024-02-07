@@ -1,7 +1,7 @@
 <template>
   <ion-page>
       <path-main class="path-compo"></path-main>
-      <settings-part class="setting"></settings-part>
+      <settings-part @chosenBattalion="toPath" class="setting"></settings-part>
   </ion-page>
 </template>
 
@@ -14,6 +14,11 @@ import SettingsPart from '@/components/main/SettingsPart.vue';
 export default defineComponent({
   name: "Home",
   components: { IonContent, IonPage, PathMain, SettingsPart },
+  methods: {
+toPath(chosenBattalion: any, isOld: any) {
+    this.$emit("chosenBattalion", chosenBattalion, isOld);
+}
+}
 });
 </script>
 
