@@ -34,7 +34,7 @@ export default defineComponent({
         navigateToWeek(){
             this.$router.push('/weekDetails')
         }
-
+ 
 
     },
 
